@@ -16,11 +16,10 @@ foreach ($cal as $key => $month) {
   $range = $month->format('t');
 
   for ($day = 1; $day <= $range; $day++) {
-    $d = $month->modify('+' . $day - 1 . ' days')->format('l');
-    $t = $month->modify('+' . $day . ' days')->getTimestamp();
+    $t = $month->getTimestamp();
 
     $generatedCalendar[$m][$day] = [
-      'day' => $d,
+      'day' => $month->modify('+1 days')->format('l'),
       'timestamp' => $t,
       'event' => randomEvent(),
     ];
@@ -46,10 +45,6 @@ function randomEvent() {
   $events = explode("\n", $eventsContents);
   foreach ($events as &$event) {
     if ($event === '') {
-      $event = [
-        'short' => '',
-        'long' => '',
-      ];
       continue;
     }
     $exploded = explode('|', $event);
@@ -64,5 +59,5 @@ function randomEvent() {
 
   $result = $events[$pointer];
 
-  return $shouldReturnEvent === 1 ? $result : '';
+  return $shouldReturnEvent === 1 ? $result :'';
 }
