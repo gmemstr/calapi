@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CalAPI</title>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Mono:300,400" rel="stylesheet">
+</head>
+<body>
+    <h1>CalAPI <small>random calendars with random events</small></h1>
+
+    <h2>the api</h2>
+
+    <pre><code>
+GET https://calapi.gmem.dev/api.php
+
+Response
+
+{
+  "02": {
+    "1": {
+      "day": "Friday",
+      "timestamp": 1549078949,
+      "event": {
+        "short": "some sort of event",
+        "long": "this is a long description of an event"
+      }
+    },
+    "2": {
+      "day": "Sunday",
+      "timestamp": 1549338149,
+      "event": {
+        "short": "",
+        "long": ""
+      }
+    },
+    ...
+    "27": {
+      "day": "Sunday",
+      "timestamp": 1611978149,
+      "event": ""
+    },
+    "28": {
+      "day": "Friday",
+      "timestamp": 1616730149,
+      "event": {
+        "short": "",
+        "long": ""
+      }
+    }
+  },
+  "03": {
+    "1": {
+      "day": "Friday",
+      "timestamp": 1551498149,
+      "event": ""
+    },
+    "2": {
+      "day": "Sunday",
+      "timestamp": 1551757349,
+      "event": ""
+    ...
+    "30": {
+      "day": "Sunday",
+      "timestamp": 1629171749,
+      "event": ""
+    },
+    "31": {
+      "day": "Thursday",
+      "timestamp": 1634442149,
+      "event": {
+        "short": "some sort of event",
+        "long": "this is a long description of an event"
+      }
+    }
+  }
+}
+    </code></pre>
+
+    <h3>JavaScript</h3>
+    <pre><code>
+fetch("https://calapi.gmem.dev/api.php").then(function(response) {
+    return response.json();
+  })
+  .then(function(json) {
+    console.log(JSON.stringify(json));
+  });
+    </code></pre>
+
+    <style>
+        body {
+            font-family: 'Fira Mono', sans-serif;
+        }
+        h1 {
+            font-weight: lighter;
+        }
+        code {
+            font-family: 'Fira Mono', monospace;
+        }
+    </style>
+</body>
+</html>
